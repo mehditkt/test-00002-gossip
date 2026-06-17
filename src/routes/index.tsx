@@ -275,18 +275,18 @@ function Home() {
         <section id="trouver" className="snap-section">
           <div className="absolute inset-0 aurora-bg" />
           <div className="absolute inset-0 grain-overlay" />
-          <div className="relative z-10 h-full w-full mx-auto max-w-7xl px-6 sm:px-10 pt-24 pb-12 grid lg:grid-cols-2 gap-10 items-center">
+          <div className="relative z-10 h-full w-full mx-auto max-w-7xl px-6 sm:px-10 pt-20 pb-8 sm:pt-24 sm:pb-12 grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.5em] text-primary mb-5">Où nous trouver</p>
-              <h2 className="font-display text-5xl sm:text-6xl font-black leading-[0.95]">
-                <span className="neon-text">Sur le quai,</span> côté rivière.
+              <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.5em] text-primary mb-3 sm:mb-5">Où nous trouver</p>
+              <h2 className="font-display text-4xl sm:text-6xl font-black leading-[0.95]">
+                <span className="neon-text">Sur le quai,</span><br className="hidden sm:block" /> côté rivière.
               </h2>
-              <div className="mt-8 space-y-3 max-w-md">
+              <div className="mt-6 sm:mt-8 space-y-3 max-w-md">
                 <Info icon={MapPin} title="Adresse" value={ADDRESS} />
                 <Info icon={Phone} title="Téléphone" value={PHONE} href={`tel:${PHONE_TEL}`} />
               </div>
             </div>
-            <div className="relative rounded-3xl overflow-hidden matte-card aspect-[4/5] sm:aspect-[5/4] lg:aspect-square">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden matte-card h-[40vh] min-h-[200px] sm:h-auto sm:aspect-[5/4] lg:aspect-square w-full">
               <iframe title="Carte — Le Gossip Lounge" src={MAP_EMBED} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="absolute inset-0 h-full w-full grayscale-[0.55] contrast-[0.95] brightness-[0.55]" />
             </div>
           </div>

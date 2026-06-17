@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, CalendarDays, Clock, Mail, Phone, User, Users, Send, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowLeft, CalendarDays, Clock, Mail, Phone, User, Users, Send, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import terrasseImg from "@/assets/terrasse-tentes.jpg";
 
@@ -109,10 +109,7 @@ Merci de confirmer cette réservation auprès du client.
 
             {/* Left column — branding */}
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
-                <Sparkles size={14} className="text-primary/60" />
-              </div>
+
 
               <p className="text-[10px] uppercase tracking-[0.6em] text-primary/80 mb-4">Réservation</p>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.92]">
