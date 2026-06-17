@@ -336,6 +336,8 @@ function Home() {
                   </motion.div>
                 ))}
               </div>
+              <button
+                onClick={() => {
                   setCarteOpen(false);
                   setTimeout(() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" }), 250);
                 }}
