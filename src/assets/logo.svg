@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 280" fill="none">
+  <circle cx="110" cy="108" r="98" stroke="currentColor" stroke-width="10" fill="none"/>
+  <circle cx="110" cy="108" r="82" stroke="currentColor" stroke-width="4.5" fill="none"/>
+  <ellipse cx="110" cy="108" rx="50" ry="76" stroke="currentColor" stroke-width="10" fill="none" transform="rotate(-37 110 108)"/>
+  <line x1="58" y1="170" x2="162" y2="46" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+  <text x="110" y="228" font-family="Arial Black,Helvetica Neue,sans-serif" font-size="32" font-weight="900" text-anchor="middle" fill="currentColor" letter-spacing="3">GOSSIP</text>
+  <text x="110" y="268" font-family="Arial Black,Helvetica Neue,sans-serif" font-size="32" font-weight="900" text-anchor="middle" fill="currentColor" letter-spacing="3">LOUNGE</text>
+</svg>
