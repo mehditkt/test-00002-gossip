@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useRouter } from "@tanstack/react-router";
-import logoUrl from "@/assets/logo.svg?url";
+import logoUrl from "@/assets/logo-gossip.png?url";
 
 const links = [
   { to: "/", hash: "accueil", label: "Accueil" },
@@ -9,6 +9,7 @@ const links = [
   { to: "/", hash: "carte", label: "Carte" },
   { to: "/", hash: "menu", label: "Menu" },
   { to: "/", hash: "terrasse", label: "Terrasse" },
+  { to: "/", hash: "trouver", label: "Position" },
   { to: "/", hash: "contact", label: "Contact" },
 ] as const;
 
@@ -35,7 +36,7 @@ export function Navbar() {
             width={40}
             height={40}
             decoding="async"
-            className="h-9 w-9 object-contain invert brightness-[4] opacity-90"
+            className="h-9 w-9 object-contain invert brightness-[10]"
           />
           <span className="font-display text-lg sm:text-xl font-bold tracking-[0.18em]">GOSSIP</span>
         </Link>

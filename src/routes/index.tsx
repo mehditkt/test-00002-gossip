@@ -5,15 +5,13 @@ import { MapPin, Phone, Instagram, Clock, ChevronDown, Star, Leaf, BookOpen, Arr
 import { Navbar } from "@/components/Navbar";
 import heroImg from "@/assets/hero.jpg";
 import franchiseImg from "@/assets/franchise.jpg";
-import terrasseImg from "@/assets/terrasse.jpg";
+import terrasseImg from "@/assets/terrasse-tentes.jpg";
 import carteBook from "@/assets/carte-book.jpg";
 import carteBg from "@/assets/carte-bg.jpg";
 import { categories, type Category, type Product } from "@/lib/menu-data";
 
-const MENU_FOOD = "/images/menu-food.jpg";
-const MENU_DRINKS = "/images/menu-drinks.jpg";
-const TERRASSE_1 = "/images/terrasse-1.jpg";
-const TERRASSE_2 = "/images/terrasse-2.jpg";
+import MENU_FOOD from "@/assets/menu-food.jpg";
+import MENU_DRINKS from "@/assets/menu-drinks.jpg";
 
 const SITE_NAME = "Le Gossip Lounge";
 const SITE_DESC = "Lounge & chicha en bord de Seine à Vitry-sur-Seine — cocktails signature, narguilés premium, burgers gourmets, milkshakes et desserts maison. Terrasse intimiste au fil de l'eau.";
@@ -267,14 +265,9 @@ function Home() {
             <h2 className="font-display text-3xl sm:text-5xl font-black leading-[0.95] max-w-2xl">
               La Seine à vos <span className="neon-text">pieds.</span>
             </h2>
-            <div className="mt-6 grid grid-cols-2 gap-2.5 max-w-sm">
-              <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-[0_16px_40px_-12px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
-                <img src={TERRASSE_1} alt="Terrasse Gossip Lounge" className="h-full w-full object-cover" loading="lazy" />
-              </div>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-[0_16px_40px_-12px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
-                <img src={TERRASSE_2} alt="Terrasse Gossip Lounge — vue 2" className="h-full w-full object-cover" loading="lazy" />
-              </div>
-            </div>
+            <p className="mt-5 max-w-xl text-sm sm:text-base text-foreground/85 leading-relaxed">
+              Nos tentes privatisables, banquettes moelleuses et gazon synthétique offrent un cadre unique pour vos soirées au bord de l'eau.
+            </p>
           </div>
         </Slide>
 
