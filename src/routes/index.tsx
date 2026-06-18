@@ -4,8 +4,9 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { MapPin, Phone, Instagram, Clock, ChevronDown, Star, Leaf, BookOpen, ArrowRight, X, ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import heroImg from "@/assets/hero.jpg";
-import franchiseImg from "@/assets/franchise.jpg";
-import terrasseImg from "@/assets/terrasse-tentes.jpg";
+import photo1 from "@/assets/photo1.jpg";
+import photo2 from "@/assets/photo2.jpg";
+import photo3 from "@/assets/photo3.jpg";
 import carteBook from "@/assets/carte-book.jpg";
 import carteBg from "@/assets/carte-bg.jpg";
 import { categories, type Category, type Product } from "@/lib/menu-data";
@@ -63,6 +64,7 @@ function Home() {
   const [carteOpen, setCarteOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [activeProduct, setActiveProduct] = useState<{ product: Product; category: Category } | null>(null);
+  const [nuit, setNuit] = useState(false);
 
   // Hero Scroll Effects
   const { scrollYProgress: heroScroll } = useScroll({ offset: ["start start", "end start"] });
@@ -84,7 +86,7 @@ function Home() {
           <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
             <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
               className="text-sm font-body uppercase tracking-[0.3em] text-white/90 mb-6 font-bold shadow-sm">
-              Vitry-sur-Seine · California Vibes
+              Vitry-sur-Seine
             </motion.p>
             <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.15, type: "spring" }}
               className="font-display text-7xl sm:text-9xl md:text-[11rem] font-black leading-none text-white drop-shadow-2xl">
@@ -111,7 +113,7 @@ function Home() {
         </section>
 
         {/* LE LIEU - Slides over the hero */}
-        <section className="relative z-20 bg-background rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] overflow-hidden">
+        <section id="franchise" className="relative z-20 bg-background rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] overflow-hidden">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
           <div className="max-w-6xl mx-auto px-6 py-24 sm:py-32 relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -145,7 +147,7 @@ function Home() {
               className="flex-1 w-full"
             >
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 border-8 border-white">
-                <img src={franchiseImg} alt="Ambiance lounge" className="w-full h-full object-cover" />
+                <img src={photo2} alt="Ambiance lounge" className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </div>
@@ -179,7 +181,7 @@ function Home() {
                 Notre <span className="neon-text">Sélection</span>
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6">
               {categories.map((cat, i) => (
                 <motion.button
                   key={cat.id}
@@ -189,13 +191,13 @@ function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ y: -8, scale: 1.02 }}
-                  className="group relative aspect-[3/4] rounded-3xl overflow-hidden shadow-xl text-left bg-black"
+                  className="group relative aspect-[3/4] rounded-xl sm:rounded-3xl overflow-hidden shadow-xl text-left bg-black"
                 >
                   <img src={cat.cover} alt={cat.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6">
-                    <p className="text-xs uppercase font-bold tracking-[0.2em] text-primary mb-2">{cat.items.length} produits</p>
-                    <h3 className="font-display text-3xl font-black text-white">{cat.name}</h3>
+                  <div className="absolute inset-x-0 bottom-0 p-2 sm:p-6">
+                    <p className="text-[8px] sm:text-xs uppercase font-bold tracking-[0.2em] text-primary mb-1 sm:mb-2">{cat.items.length} produits</p>
+                    <h3 className="font-display text-xs sm:text-3xl font-black text-white">{cat.name}</h3>
                   </div>
                 </motion.button>
               ))}
@@ -204,7 +206,7 @@ function Home() {
         </section>
 
         {/* TERRASSE */}
-        <section className="relative py-32 bg-background overflow-hidden">
+        <section id="terrasse" className="relative py-32 bg-background overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 rounded-l-full blur-3xl -z-10" />
           <div className="max-w-6xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
             <motion.div 
@@ -214,7 +216,28 @@ function Home() {
               className="flex-1 w-full relative"
             >
               <div className="absolute -inset-4 bg-primary/20 rounded-[3rem] rotate-3 blur-sm" />
-              <img src={terrasseImg} alt="Terrasse Gossip" className="relative rounded-[2rem] shadow-2xl w-full object-cover aspect-square sm:aspect-video lg:aspect-square" />
+              <div className="relative rounded-[2rem] shadow-2xl w-full aspect-square sm:aspect-video lg:aspect-square overflow-hidden border-8 border-white bg-black">
+                <AnimatePresence mode="wait">
+                  <motion.img 
+                    key={nuit ? "nuit" : "jour"}
+                    initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    src={nuit ? photo3 : photo1} 
+                    alt="Terrasse Gossip" 
+                    className="absolute inset-0 w-full h-full object-cover" 
+                  />
+                </AnimatePresence>
+              </div>
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20">
+                <button 
+                  onClick={() => setNuit(!nuit)}
+                  className="bg-foreground text-background font-bold text-sm px-6 py-3 rounded-full shadow-2xl hover:scale-105 transition-transform whitespace-nowrap border border-white/20"
+                >
+                  {nuit ? "Voir la terrasse de jour ☀️" : "Afficher la terrasse de nuit 🌙"}
+                </button>
+              </div>
             </motion.div>
             <div className="flex-1 space-y-6">
               <h2 className="font-display text-5xl sm:text-6xl font-black leading-tight text-foreground">

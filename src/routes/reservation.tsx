@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, CalendarDays, Clock, Mail, Phone, User, Users, Send, CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import terrasseImg from "@/assets/terrasse-tentes.jpg";
+import terrasseImg from "@/assets/photo1.jpg";
 
 const RESTAURANT_EMAIL = "contact@legossiplounge.fr";
 
@@ -92,15 +92,12 @@ Merci de confirmer cette réservation auprès du client.
   return (
     <>
       <Navbar />
-      <main className="relative min-h-dvh">
-        {/* Full-bleed background */}
-        <div className="absolute inset-0 -z-10">
-          <img src={terrasseImg} alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a]/92 via-[#0f1412]/88 to-[#0a0a0a]/95" />
-        </div>
+      <main className="relative min-h-dvh bg-[#FDFBF7] text-foreground">
+        {/* Decorative background blur */}
+        <div className="absolute top-0 right-0 w-1/2 h-96 bg-primary/10 rounded-bl-full blur-3xl -z-10" />
 
         <div className="mx-auto max-w-5xl px-5 sm:px-8 pt-28 pb-20">
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors mb-10">
+          <Link to="/" className="inline-flex items-center gap-2 text-sm text-foreground/70 hover:text-primary transition-colors mb-10 font-bold">
             <ArrowLeft size={15} /> Retour
           </Link>
 
@@ -109,34 +106,28 @@ Merci de confirmer cette réservation auprès du client.
 
             {/* Left column — branding */}
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-
-
-              <p className="text-[10px] uppercase tracking-[0.6em] text-primary/80 mb-4">Réservation</p>
+              <p className="text-[10px] uppercase tracking-[0.6em] text-primary mb-4 font-bold">Réservation</p>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.92]">
                 Votre soirée<br />au <span className="neon-text">Gossip.</span>
               </h1>
-              <p className="mt-6 text-foreground/55 text-sm leading-relaxed max-w-sm">
+              <p className="mt-6 text-foreground/70 text-sm leading-relaxed max-w-sm font-medium">
                 Remplissez le formulaire ci-contre et notre équipe vous confirmera votre table par e-mail ou téléphone sous 24h.
               </p>
 
               {/* Quick info pills */}
-              <div className="mt-8 space-y-2.5">
-                <div className="flex items-center gap-3 text-xs text-foreground/50">
-                  <div className="h-7 w-7 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
-                    <Clock size={12} className="text-primary/70" />
+              <div className="mt-8 space-y-3">
+                <div className="flex items-center gap-4 text-sm font-bold text-foreground">
+                  <div className="h-10 w-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <Clock size={16} className="text-primary" />
                   </div>
                   <span>18h — 02h, 7j/7</span>
                 </div>
-                <div className="flex items-center gap-3 text-xs text-foreground/50">
-                  <div className="h-7 w-7 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
-                    <Phone size={12} className="text-primary/70" />
+                <div className="flex items-center gap-4 text-sm font-bold text-foreground">
+                  <div className="h-10 w-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <Phone size={16} className="text-primary" />
                   </div>
                   <span>07 87 94 40 67</span>
                 </div>
-              </div>
-
-              <div className="mt-10 flex items-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
               </div>
             </motion.div>
 
@@ -144,22 +135,22 @@ Merci de confirmer cette réservation auprès du client.
             {sent ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
-                className="rounded-[28px] bg-white/[0.03] border border-white/[0.06] backdrop-blur-md p-8 sm:p-10 text-center"
+                className="rounded-[28px] bg-[#f5f5dc] border border-black/5 shadow-2xl p-8 sm:p-10 text-center"
               >
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 size={28} className="text-primary" />
+                <div className="h-16 w-16 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 size={32} className="text-primary" />
                 </div>
-                <h2 className="font-display text-2xl font-black">Demande envoyée</h2>
-                <p className="mt-3 text-foreground/55 text-sm max-w-sm mx-auto leading-relaxed">
+                <h2 className="font-display text-3xl font-black text-foreground">Demande envoyée</h2>
+                <p className="mt-4 text-foreground/70 text-sm max-w-sm mx-auto leading-relaxed">
                   Votre application e-mail s'est ouverte avec votre demande pré-remplie. Envoyez-la pour finaliser — nous reviendrons vers vous très vite.
                 </p>
-                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                   <button onClick={() => setSent(false)}
-                    className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-6 py-3 text-sm text-foreground/70 hover:border-primary/30 transition-colors">
+                    className="rounded-full bg-white border border-black/10 px-8 py-3 text-sm font-bold text-foreground hover:border-primary/50 transition-colors shadow-sm">
                     Nouvelle réservation
                   </button>
                   <Link to="/"
-                    className="rounded-2xl bg-primary/90 px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary transition-colors">
+                    className="rounded-full bg-primary px-8 py-3 text-sm font-bold text-primary-foreground hover:scale-105 transition-transform shadow-md">
                     Retour à l'accueil
                   </Link>
                 </div>
@@ -168,23 +159,23 @@ Merci de confirmer cette réservation auprès du client.
               <motion.form
                 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
                 onSubmit={handleSubmit}
-                className="rounded-[28px] bg-white/[0.025] border border-white/[0.06] backdrop-blur-md p-6 sm:p-8 space-y-5"
+                className="rounded-[28px] bg-[#f5f5dc] border border-black/5 shadow-2xl p-6 sm:p-10 space-y-6"
               >
                 {/* Identity */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <Field icon={User} label="Prénom" required value={form.prenom} onChange={(v) => update("prenom", v)} />
                   <Field icon={User} label="Nom" required value={form.nom} onChange={(v) => update("nom", v)} />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <Field icon={Mail} type="email" label="E-mail" required value={form.email} onChange={(v) => update("email", v)} />
                   <Field icon={Phone} type="tel" label="Téléphone" required value={form.telephone} onChange={(v) => update("telephone", v)} />
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+                <div className="h-px bg-black/10 my-2" />
 
                 {/* Date / time / guests */}
-                <div className="grid sm:grid-cols-3 gap-4">
+                <div className="grid sm:grid-cols-3 gap-5">
                   <Field icon={CalendarDays} type="date" label="Date" required min={today} value={form.date} onChange={(v) => update("date", v)} />
                   <SelectField icon={Clock} label="Heure" required value={form.heure} onChange={(v) => update("heure", v)}
                     options={HOURS.map((h) => ({ value: h, label: h }))} />
@@ -196,23 +187,23 @@ Merci de confirmer cette réservation auprès du client.
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[10px] uppercase tracking-[0.4em] text-foreground/40 mb-2">Message</label>
+                  <label className="block text-[11px] uppercase tracking-[0.2em] font-bold text-foreground/60 mb-2">Message</label>
                   <textarea
                     value={form.message}
                     onChange={(e) => update("message", e.target.value)}
                     rows={3}
                     placeholder="Demande particulière, allergies, terrasse souhaitée…"
-                    className="w-full rounded-2xl bg-white/[0.03] border border-white/[0.07] px-4 py-3 text-sm outline-none placeholder:text-foreground/25 focus:border-primary/40 transition-colors resize-none"
+                    className="w-full rounded-2xl bg-white border border-black/10 px-5 py-4 text-sm font-medium outline-none placeholder:text-foreground/30 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all resize-none shadow-sm text-foreground"
                   />
                 </div>
 
                 {/* Submit */}
                 <button type="submit"
-                  className="w-full flex items-center justify-center gap-3 rounded-2xl bg-primary/90 hover:bg-primary px-6 py-4 font-semibold text-primary-foreground transition-colors">
-                  <Send size={15} /> Envoyer la demande
+                  className="w-full flex items-center justify-center gap-3 rounded-2xl bg-primary hover:bg-primary/90 px-6 py-5 mt-4 font-black text-lg text-primary-foreground transition-transform hover:scale-[1.02] shadow-[0_10px_20px_-10px_rgba(249,196,28,0.8)]">
+                  <Send size={18} /> Confirmer la demande
                 </button>
 
-                <p className="text-[10px] text-foreground/30 text-center pt-1">
+                <p className="text-[11px] font-medium text-foreground/40 text-center pt-2">
                   Vos informations sont transmises par e-mail à l'équipe du Gossip.
                 </p>
               </motion.form>
@@ -233,13 +224,13 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-[10px] uppercase tracking-[0.4em] text-foreground/40 mb-2">{label}{required && " *"}</label>
+      <label className="block text-[11px] uppercase tracking-[0.2em] font-bold text-foreground/60 mb-2">{label}{required && " *"}</label>
       <div className="relative">
-        {Icon && <Icon size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/50" />}
+        {Icon && <Icon size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" />}
         <input
           type={type} value={value} required={required} placeholder={placeholder} min={min}
           onChange={(e) => onChange(e.target.value)}
-          className={`w-full rounded-2xl bg-white/[0.03] border border-white/[0.07] ${Icon ? "pl-10" : "pl-4"} pr-4 py-3 text-sm outline-none placeholder:text-foreground/25 focus:border-primary/40 transition-colors`}
+          className={`w-full rounded-2xl bg-white border border-black/10 ${Icon ? "pl-11" : "pl-5"} pr-4 py-3.5 text-sm font-medium outline-none placeholder:text-foreground/30 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all shadow-sm text-foreground`}
         />
       </div>
     </div>
@@ -255,15 +246,15 @@ function SelectField({
 }) {
   return (
     <div>
-      <label className="block text-[10px] uppercase tracking-[0.4em] text-foreground/40 mb-2">{label}{required && " *"}</label>
+      <label className="block text-[11px] uppercase tracking-[0.2em] font-bold text-foreground/60 mb-2">{label}{required && " *"}</label>
       <div className="relative">
-        {Icon && <Icon size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/50 pointer-events-none" />}
+        {Icon && <Icon size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none" />}
         <select
           value={value} required={required}
           onChange={(e) => onChange(e.target.value)}
-          className={`w-full appearance-none rounded-2xl bg-white/[0.03] border border-white/[0.07] ${Icon ? "pl-10" : "pl-4"} pr-4 py-3 text-sm outline-none placeholder:text-foreground/25 focus:border-primary/40 transition-colors`}
+          className={`w-full appearance-none rounded-2xl bg-white border border-black/10 ${Icon ? "pl-11" : "pl-5"} pr-4 py-3.5 text-sm font-medium outline-none placeholder:text-foreground/30 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all shadow-sm text-foreground`}
         >
-          {options.map((o) => <option key={o.value} value={o.value} className="bg-[#111]">{o.label}</option>)}
+          {options.map((o) => <option key={o.value} value={o.value} className="bg-white">{o.label}</option>)}
         </select>
       </div>
     </div>
