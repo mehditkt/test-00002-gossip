@@ -117,11 +117,11 @@ function Home() {
         <section id="franchise" className="relative z-20 bg-background rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] overflow-hidden">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
-          <div className="max-w-6xl mx-auto px-6 py-24 sm:py-32 relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            <div className="flex-1 space-y-6">
+          <div className="max-w-6xl mx-auto px-6 py-12 sm:py-32 relative z-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-20">
+            <div className="flex-1 space-y-4 sm:space-y-8">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary">Le Lieu</p>
-              <h2 className="font-display text-4xl sm:text-6xl font-black leading-tight text-foreground">
-                Votre escale au <span className="neon-text">soleil.</span>
+              <h2 className="font-display text-4xl sm:text-7xl font-black leading-tight text-foreground">
+                Une ambiance <span className="neon-text">unique</span>.
               </h2>
               <p className="text-lg text-foreground/80 leading-relaxed">
                 Niché sur le quai Jules Guesde, Le Gossip est un lounge repensé pour vibrer à l'heure d'été.
@@ -147,8 +147,8 @@ function Home() {
               viewport={{ once: true, margin: "-100px" }}
               className="flex-1 w-full"
             >
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 border-8 border-white">
-                <img src={photo2} alt="Ambiance lounge" className="w-full h-full object-cover" />
+              <div className="relative aspect-square sm:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 border-8 border-white">
+                <img src={photo2} alt="Ambiance lounge" className="w-full h-full object-cover filter contrast-110 saturate-110" style={{ imageRendering: 'high-quality' }} />
               </div>
             </motion.div>
           </div>
@@ -156,10 +156,10 @@ function Home() {
 
 
         {/* MENU PREVIEW */}
-        <section id="menu" className="relative py-24 sm:py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="font-display text-5xl sm:text-7xl font-black text-foreground">
+        <section id="menu" className="relative py-16 sm:py-32 bg-white">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-8 sm:mb-16">
+              <h2 className="font-display text-4xl sm:text-7xl font-black text-foreground">
                 Notre <span className="neon-text">Sélection</span>
               </h2>
             </div>
@@ -188,12 +188,12 @@ function Home() {
         </section>
 
         {/* LA CARTE */}
-        <section id="carte" className="relative py-32 bg-background overflow-hidden z-20 [perspective:1000px]">
+        <section id="carte" className="relative py-16 sm:py-32 bg-background overflow-hidden z-20 [perspective:1000px]">
           <div className="max-w-6xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className="font-display text-5xl sm:text-7xl font-black mb-16 text-foreground">
+            <h2 className="font-display text-4xl sm:text-7xl font-black mb-8 sm:mb-16 text-foreground">
               Notre <span className="neon-text">Carte</span>
             </h2>
-            <div className="relative aspect-[16/9] sm:aspect-[21/9] max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white group flex items-center justify-center [perspective:1000px] bg-black">
+            <div className="relative aspect-[4/3] sm:aspect-[21/9] max-w-5xl mx-auto rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl border-4 sm:border-8 border-white group flex items-center justify-center [perspective:1000px] bg-black">
               {/* Background Decor */}
               <img src={tableDecor} alt="Table Decor" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90" />
               
@@ -215,7 +215,7 @@ function Home() {
               </div>
 
               {/* View Overlay */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center z-30">
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden sm:flex items-center justify-center z-30">
                 <button 
                   onClick={() => setCarteOpen(true)}
                   className="bg-primary text-primary-foreground rounded-full px-8 py-4 font-bold text-lg hover:scale-110 transition-transform shadow-2xl"
@@ -224,13 +224,22 @@ function Home() {
                 </button>
               </div>
             </div>
+            {/* Mobile Explore Button */}
+            <div className="mt-6 sm:hidden">
+              <button 
+                onClick={() => setCarteOpen(true)}
+                className="w-full bg-primary text-primary-foreground rounded-full px-6 py-4 font-black text-lg shadow-xl active:scale-95 transition-transform"
+              >
+                Explorer notre carte
+              </button>
+            </div>
           </div>
         </section>
 
         {/* TERRASSE */}
-        <section id="terrasse" className="relative py-32 bg-background overflow-hidden">
+        <section id="terrasse" className="relative py-16 sm:py-32 bg-background overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 rounded-l-full blur-3xl -z-10" />
-          <div className="max-w-6xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+          <div className="max-w-6xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-20">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }} 
               whileInView={{ opacity: 1, scale: 1 }} 
@@ -248,21 +257,22 @@ function Home() {
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     src={nuit ? photo3 : photo1} 
                     alt="Terrasse Gossip" 
-                    className="absolute inset-0 w-full h-full object-cover" 
+                    className="absolute inset-0 w-full h-full object-cover filter contrast-110 saturate-110" 
+                    style={{ imageRendering: 'high-quality' }}
                   />
                 </AnimatePresence>
               </div>
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20">
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 w-full px-4 sm:px-0 sm:w-auto">
                 <button 
                   onClick={() => setNuit(!nuit)}
-                  className="bg-foreground text-background font-bold text-sm px-6 py-3 rounded-full shadow-2xl hover:scale-105 transition-transform whitespace-nowrap border border-white/20"
+                  className="w-full sm:w-auto bg-foreground text-background font-bold text-sm sm:text-base px-6 py-3 sm:py-4 rounded-full shadow-2xl hover:scale-105 transition-transform whitespace-nowrap border border-white/20"
                 >
                   {nuit ? "Voir la terrasse de jour ☀️" : "Afficher la terrasse de nuit 🌙"}
                 </button>
               </div>
             </motion.div>
-            <div className="flex-1 space-y-6">
-              <h2 className="font-display text-5xl sm:text-6xl font-black leading-tight text-foreground">
+            <div className="flex-1 space-y-4 sm:space-y-6">
+              <h2 className="font-display text-4xl sm:text-6xl font-black leading-tight text-foreground">
                 La terrasse <span className="neon-text">idéale.</span>
               </h2>
               <p className="text-lg text-foreground/80 leading-relaxed">
@@ -273,21 +283,21 @@ function Home() {
         </section>
 
         {/* POSITION */}
-        <section id="position" className="relative py-32 bg-background overflow-hidden">
+        <section id="position" className="relative py-16 sm:py-32 bg-background overflow-hidden">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
           <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-4">Position</p>
-              <h2 className="font-display text-5xl sm:text-7xl font-black leading-tight text-foreground">
+            <div className="text-center mb-8 sm:mb-16">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-2 sm:mb-4">Position</p>
+              <h2 className="font-display text-4xl sm:text-7xl font-black leading-tight text-foreground">
                 Où nous <span className="neon-text">trouver</span>.
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-              <div className="space-y-8">
-                <div className="matte-card rounded-[2rem] p-8 sm:p-10 shadow-xl border border-black/5 bg-white">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-start">
+              <div className="space-y-4 sm:space-y-8">
+                <div className="matte-card rounded-3xl sm:rounded-[2rem] p-5 sm:p-10 shadow-xl border border-black/5 bg-white">
                   <div className="flex items-start gap-5">
                     <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                       <MapPin size={24} className="text-primary" />
@@ -297,28 +307,28 @@ function Home() {
                       <p className="text-lg font-medium text-foreground/80 leading-relaxed mb-4">
                         4 Quai Jules Guesde, 94400 Vitry-sur-Seine, France
                       </p>
-                      <a href="https://goo.gl/maps/QG2T2uVwM5X2" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-widest">
+                  <a href="https://goo.gl/maps/QG2T2uVwM5X2" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-widest">
                         <ArrowRight size={16} /> Itinéraire Google Maps
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="matte-card rounded-3xl p-8 shadow-lg text-center bg-white border border-black/5">
-                    <Clock size={28} className="text-primary mx-auto mb-4" />
-                    <h4 className="font-display text-xl font-bold mb-2">Horaires</h4>
-                    <p className="font-medium text-foreground/70">Ouvert 7j/7<br />de 18h à 02h</p>
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="matte-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-lg text-center bg-white border border-black/5">
+                    <Clock size={24} className="text-primary mx-auto mb-2 sm:mb-4" />
+                    <h4 className="font-display text-lg sm:text-xl font-bold mb-1 sm:mb-2">Horaires</h4>
+                    <p className="text-sm sm:text-base font-medium text-foreground/70">Ouvert 7j/7<br />de 18h à 02h</p>
                   </div>
-                  <div className="matte-card rounded-3xl p-8 shadow-lg text-center bg-white border border-black/5">
-                    <Phone size={28} className="text-primary mx-auto mb-4" />
-                    <h4 className="font-display text-xl font-bold mb-2">Téléphone</h4>
-                    <p className="font-medium text-foreground/70">07 87 94 40 67</p>
+                  <div className="matte-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-lg text-center bg-white border border-black/5">
+                    <Phone size={24} className="text-primary mx-auto mb-2 sm:mb-4" />
+                    <h4 className="font-display text-lg sm:text-xl font-bold mb-1 sm:mb-2">Téléphone</h4>
+                    <p className="text-sm sm:text-base font-medium text-foreground/70">07 87 94 40 67</p>
                   </div>
                 </div>
               </div>
 
-              <div className="relative aspect-square sm:aspect-video lg:aspect-square rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
+              <div className="relative aspect-square sm:aspect-video lg:aspect-square rounded-3xl sm:rounded-[2rem] overflow-hidden shadow-2xl border-4 sm:border-8 border-white bg-white">
                 <iframe 
                   title="Carte Le Gossip Lounge" 
                   src="https://www.google.com/maps?q=Le+Gossip+Lounge+4+Quai+Jules+Guesde+Vitry-sur-Seine&z=16&output=embed" 
