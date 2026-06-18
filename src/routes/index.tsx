@@ -243,7 +243,7 @@ function Home() {
         <div className="h-16 sm:h-32 bg-background border-t-2 border-primary/20"></div>
 
         {/* LE LIEU - Slides over the hero */}
-        <section id="franchise" className="relative z-20 bg-background overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+        <section id="franchise" className="relative z-20 bg-[#F4F1EA] overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
           <div className="max-w-6xl mx-auto px-6 py-10 sm:py-24 relative z-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-20">
@@ -317,9 +317,9 @@ function Home() {
         </section>
 
         {/* LA CARTE */}
-        <section id="carte" className="relative py-16 sm:py-32 bg-background overflow-hidden z-20 [perspective:1000px]">
+        <section id="carte" className="relative py-16 sm:py-32 bg-zinc-900 overflow-hidden z-20 [perspective:1000px]">
           <div className="max-w-6xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className="font-display text-4xl sm:text-7xl font-black mb-8 sm:mb-16 text-foreground">
+            <h2 className="font-display text-4xl sm:text-7xl font-black mb-8 sm:mb-16 text-white">
               Notre <span className="neon-text">Carte</span>
             </h2>
             <div className="relative aspect-[4/3] sm:aspect-[21/9] max-w-5xl mx-auto rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl border-4 sm:border-8 border-white group flex items-center justify-center [perspective:1000px] bg-black">
@@ -366,7 +366,7 @@ function Home() {
         </section>
 
         {/* TERRASSE */}
-        <section id="terrasse" className="relative py-16 sm:py-32 bg-background overflow-hidden">
+        <section id="terrasse" className="relative py-16 sm:py-32 bg-[#e0f7fa] overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 rounded-l-full blur-3xl -z-10" />
           <div className="max-w-6xl mx-auto px-6 flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-20">
             <motion.div 
@@ -412,7 +412,7 @@ function Home() {
         </section>
 
         {/* POSITION */}
-        <section id="position" className="relative py-16 sm:py-32 bg-background overflow-hidden">
+        <section id="position" className="relative py-16 sm:py-32 bg-gradient-to-b from-[#e8f5e9] via-[#e8f5e9] via-75% to-[#F4F1EA] overflow-hidden">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
