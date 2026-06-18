@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Instagram, Clock, ChevronDown, Star, Leaf, BookOpen, ArrowRight, X, ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
@@ -66,6 +66,14 @@ function Home() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [activeProduct, setActiveProduct] = useState<{ product: Product; category: Category } | null>(null);
   const [nuit, setNuit] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Hero Scroll Effects
   const { scrollYProgress: heroScroll } = useScroll({ offset: ["start start", "end start"] });
@@ -75,13 +83,48 @@ function Home() {
 
   return (
     <>
+      {/* PRELOADER */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            key="preloader"
+            initial={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-[100] bg-primary flex flex-col items-center justify-center overflow-hidden"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="text-center"
+            >
+              <h1 className="font-display text-5xl sm:text-8xl font-black text-foreground tracking-[0.2em] mb-4">GOSSIP</h1>
+              <div className="w-48 h-1 bg-black/20 rounded-full mx-auto overflow-hidden">
+                <motion.div
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "0%" }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className="w-full h-full bg-foreground rounded-full"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Navbar />
 
       <main ref={containerRef} className="w-full bg-background overflow-x-hidden">
         {/* HERO - Sticky to allow the next section to slide over it */}
         <section id="accueil" className="relative h-[100vh] w-full bg-black">
           <motion.div style={{ scale: heroScale, y: heroY, opacity: heroOpacity }} className="absolute inset-0 origin-center will-change-transform">
-            <img src={heroImg} alt="Terrasse Le Gossip Lounge" className="h-full w-full object-cover opacity-90" />
+            <motion.img 
+              initial={{ scale: 1.2 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 3, ease: "easeOut", delay: 1.5 }}
+              src={heroImg} alt="Terrasse Le Gossip Lounge" className="h-full w-full object-cover opacity-90" 
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30" />
           </motion.div>
           <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
@@ -89,7 +132,7 @@ function Home() {
               className="text-sm font-body uppercase tracking-[0.3em] text-white/90 mb-6 font-bold shadow-sm">
               Vitry-sur-Seine
             </motion.p>
-            <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.15, type: "spring" }}
+            <motion.h1 initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 1.8, type: "spring", bounce: 0.4 }}
               className="font-display text-7xl sm:text-9xl md:text-[11rem] font-black leading-none text-white drop-shadow-2xl">
               GOSSIP
             </motion.h1>
@@ -111,6 +154,42 @@ function Home() {
             className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/80 text-sm uppercase font-bold tracking-[0.2em] flex flex-col items-center gap-2 drop-shadow-md">
             Scroll <ChevronDown size={24} />
           </motion.div>
+
+          {/* Floating Badge */}
+          <motion.div
+            initial={{ y: 0, opacity: 0, rotate: 12 }}
+            animate={{ y: [-10, 10, -10], opacity: 1, rotate: [12, 5, 12] }}
+            transition={{ 
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+              opacity: { duration: 1, delay: 2 } 
+            }}
+            className="absolute top-1/4 right-8 sm:right-32 w-24 h-24 sm:w-32 sm:h-32 bg-primary rounded-full hidden sm:flex items-center justify-center shadow-[0_10px_30px_rgba(249,196,28,0.5)] z-20 border-4 border-black"
+          >
+            <p className="font-display font-black text-xs sm:text-sm text-black text-center uppercase leading-tight tracking-widest">Summer<br/>Vibes</p>
+          </motion.div>
+        </section>
+
+        {/* SCROLLING MARQUEE */}
+        <section className="bg-black py-4 sm:py-6 overflow-hidden relative z-30 border-y-4 border-primary shadow-2xl">
+          <div className="flex whitespace-nowrap">
+            <motion.div
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ ease: "linear", duration: 15, repeat: Infinity }}
+              className="flex gap-8 sm:gap-16 items-center"
+            >
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="flex gap-8 sm:gap-16 items-center">
+                  <span className="font-display text-2xl sm:text-4xl font-black text-primary tracking-widest uppercase">Chicha Premium</span>
+                  <span className="text-primary/50 text-xl">✦</span>
+                  <span className="font-display text-2xl sm:text-4xl font-black text-primary tracking-widest uppercase">Cocktails Signature</span>
+                  <span className="text-primary/50 text-xl">✦</span>
+                  <span className="font-display text-2xl sm:text-4xl font-black text-primary tracking-widest uppercase">Ambiance Lounge</span>
+                  <span className="text-primary/50 text-xl">✦</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </section>
 
         {/* LE LIEU - Slides over the hero */}
