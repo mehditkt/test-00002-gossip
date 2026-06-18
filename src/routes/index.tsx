@@ -4,9 +4,9 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { MapPin, Phone, Instagram, Clock, ChevronDown, Star, Leaf, BookOpen, ArrowRight, X, ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import heroImg from "@/assets/hero.jpg";
-import photo1 from "@/assets/photo1.jpg";
-import photo2 from "@/assets/photo2.jpg";
-import photo3 from "@/assets/photo3.jpg";
+import photo1 from "@/assets/photo1.png";
+import photo2 from "@/assets/photo2.png";
+import photo3 from "@/assets/photo3.png";
 import carteBook from "@/assets/carte-book.jpg";
 import carteBg from "@/assets/carte-bg.jpg";
 import { categories, type Category, type Product } from "@/lib/menu-data";
