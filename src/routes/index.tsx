@@ -3,12 +3,13 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Instagram, Clock, ChevronDown, Star, Leaf, BookOpen, ArrowRight, X, ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero-remastered.png";
+import tableDecor from "@/assets/table-decor.png";
+import menuFood from "@/assets/menu-food.jpg";
+import menuDrinks from "@/assets/menu-drinks.jpg";
 import photo1 from "@/assets/photo1.png";
 import photo2 from "@/assets/photo2.png";
 import photo3 from "@/assets/photo3.png";
-import carteBook from "@/assets/carte-book.jpg";
-import carteBg from "@/assets/carte-bg.jpg";
 import { categories, type Category, type Product } from "@/lib/menu-data";
 
 import MENU_FOOD from "@/assets/menu-food.jpg";
@@ -196,11 +197,51 @@ function Home() {
                   <img src={cat.cover} alt={cat.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-2 sm:p-6">
-                    <p className="text-[8px] sm:text-xs uppercase font-bold tracking-[0.2em] text-primary mb-1 sm:mb-2">{cat.items.length} produits</p>
-                    <h3 className="font-display text-xs sm:text-3xl font-black text-white">{cat.name}</h3>
+                    <p className="text-[8px] sm:text-[10px] uppercase font-bold tracking-[0.2em] text-primary mb-1 sm:mb-2">{cat.items.length} produits</p>
+                    <h3 className="font-display text-[10px] sm:text-xs font-black text-white leading-tight">{cat.name}</h3>
                   </div>
                 </motion.button>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* LA CARTE */}
+        <section id="carte" className="relative py-32 bg-background overflow-hidden z-20 [perspective:1000px]">
+          <div className="max-w-6xl mx-auto px-6 lg:px-12 text-center">
+            <h2 className="font-display text-5xl sm:text-7xl font-black mb-16 text-foreground">
+              Notre <span className="neon-text">Carte</span>
+            </h2>
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white group flex items-center justify-center [perspective:1000px] bg-black">
+              {/* Background Decor */}
+              <img src={tableDecor} alt="Table Decor" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90" />
+              
+              {/* 3D Book */}
+              <div className="relative z-10 flex w-[90%] sm:w-[60%] max-w-2xl aspect-[1.414/1] shadow-[0_30px_60px_rgba(0,0,0,0.5)] rounded-sm overflow-hidden transition-transform duration-700 group-hover:scale-[1.03] group-hover:[transform:rotateX(0deg)] [transform:rotateX(10deg)] origin-bottom bg-white ring-1 ring-black/10">
+                {/* Book Spine Shadow */}
+                <div className="absolute inset-y-0 left-1/2 w-8 -translate-x-1/2 bg-gradient-to-r from-black/5 via-black/20 to-black/5 z-20 pointer-events-none" />
+                <div className="absolute inset-y-0 left-1/2 w-px bg-black/10 z-20 pointer-events-none" />
+                
+                {/* Left Page (Food) */}
+                <div className="w-1/2 h-full bg-[#FCFAF8] relative overflow-hidden flex flex-col p-2 sm:p-4 shadow-[inset_-10px_0_20px_rgba(0,0,0,0.03)]">
+                  <img src={menuFood} alt="Menu Food" className="w-full h-full object-contain filter contrast-105 drop-shadow-sm" />
+                </div>
+                
+                {/* Right Page (Drinks) */}
+                <div className="w-1/2 h-full bg-[#FCFAF8] relative overflow-hidden flex flex-col p-2 sm:p-4 shadow-[inset_10px_0_20px_rgba(0,0,0,0.03)]">
+                  <img src={menuDrinks} alt="Menu Drinks" className="w-full h-full object-contain filter contrast-105 drop-shadow-sm" />
+                </div>
+              </div>
+
+              {/* View Overlay */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center z-30">
+                <button 
+                  onClick={() => setCarteOpen(true)}
+                  className="bg-primary text-primary-foreground rounded-full px-8 py-4 font-bold text-lg hover:scale-110 transition-transform shadow-2xl"
+                >
+                  Ouvrir la carte PDF
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -246,6 +287,65 @@ function Home() {
               <p className="text-lg text-foreground/80 leading-relaxed">
                 Nos tentes élégantes, un mobilier clair et confortable, et une vue dégagée sur l'eau. L'endroit parfait pour chiller entre amis, profiter d'une belle journée d'été ou d'une soirée douce.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* POSITION */}
+        <section id="position" className="relative py-32 bg-background overflow-hidden">
+          <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
+          <div className="absolute inset-0 grain-overlay pointer-events-none" />
+
+          <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-16">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-4">Position</p>
+              <h2 className="font-display text-5xl sm:text-7xl font-black leading-tight text-foreground">
+                Où nous <span className="neon-text">trouver</span>.
+              </h2>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+              <div className="space-y-8">
+                <div className="matte-card rounded-[2rem] p-8 sm:p-10 shadow-xl border border-black/5 bg-white">
+                  <div className="flex items-start gap-5">
+                    <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <MapPin size={24} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-2xl font-black mb-2">Adresse Exacte</h3>
+                      <p className="text-lg font-medium text-foreground/80 leading-relaxed mb-4">
+                        4 Quai Jules Guesde, 94400 Vitry-sur-Seine, France
+                      </p>
+                      <a href="https://goo.gl/maps/QG2T2uVwM5X2" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-widest">
+                        <ArrowRight size={16} /> Itinéraire Google Maps
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="matte-card rounded-3xl p-8 shadow-lg text-center bg-white border border-black/5">
+                    <Clock size={28} className="text-primary mx-auto mb-4" />
+                    <h4 className="font-display text-xl font-bold mb-2">Horaires</h4>
+                    <p className="font-medium text-foreground/70">Ouvert 7j/7<br />de 18h à 02h</p>
+                  </div>
+                  <div className="matte-card rounded-3xl p-8 shadow-lg text-center bg-white border border-black/5">
+                    <Phone size={28} className="text-primary mx-auto mb-4" />
+                    <h4 className="font-display text-xl font-bold mb-2">Téléphone</h4>
+                    <p className="font-medium text-foreground/70">07 87 94 40 67</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative aspect-square sm:aspect-video lg:aspect-square rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
+                <iframe 
+                  title="Carte Le Gossip Lounge" 
+                  src="https://www.google.com/maps?q=Le+Gossip+Lounge+4+Quai+Jules+Guesde+Vitry-sur-Seine&z=16&output=embed" 
+                  className="absolute inset-0 w-full h-full" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade" 
+                />
+              </div>
             </div>
           </div>
         </section>
