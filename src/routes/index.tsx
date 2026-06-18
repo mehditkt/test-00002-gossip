@@ -60,6 +60,14 @@ function ParallaxSection({
   );
 }
 
+const ROTATING_PHRASES = [
+  "Chicha Premium",
+  "Cocktails Signature",
+  "Ambiance Lounge",
+  "Terrasse au Soleil",
+  "Burgers Gourmets",
+];
+
 function Home() {
   const containerRef = useRef<HTMLElement | null>(null);
   const [carteOpen, setCarteOpen] = useState(false);
@@ -67,12 +75,49 @@ function Home() {
   const [activeProduct, setActiveProduct] = useState<{ product: Product; category: Category } | null>(null);
   const [nuit, setNuit] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [phraseIndex, setPhraseIndex] = useState(0);
 
+  // Preload all images during the splash screen
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
+    const imageSources = [heroImg, tableDecor, menuFood, menuDrinks, photo1, photo2, photo3];
+    // Also preload category cover images
+    categories.forEach(cat => {
+      if (cat.cover) imageSources.push(cat.cover);
+      cat.items.forEach(item => { if (item.image) imageSources.push(item.image); });
+    });
+
+    let loaded = 0;
+    const total = imageSources.length;
+    const minTime = 1800; // minimum display time in ms
+    const start = Date.now();
+
+    const checkDone = () => {
+      loaded++;
+      if (loaded >= total) {
+        const elapsed = Date.now() - start;
+        const remaining = Math.max(0, minTime - elapsed);
+        setTimeout(() => setLoading(false), remaining);
+      }
+    };
+
+    imageSources.forEach(src => {
+      const img = new Image();
+      img.onload = checkDone;
+      img.onerror = checkDone;
+      img.src = src;
+    });
+
+    // Fallback: never stay stuck on loader
+    const fallback = setTimeout(() => setLoading(false), 6000);
+    return () => clearTimeout(fallback);
+  }, []);
+
+  // Rotating phrase ticker
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPhraseIndex(prev => (prev + 1) % ROTATING_PHRASES.length);
+    }, 2500);
+    return () => clearInterval(interval);
   }, []);
 
   // Hero Scroll Effects
@@ -100,11 +145,12 @@ function Home() {
               className="text-center"
             >
               <h1 className="font-display text-5xl sm:text-8xl font-black text-foreground tracking-[0.2em] mb-4">GOSSIP</h1>
-              <div className="w-48 h-1 bg-black/20 rounded-full mx-auto overflow-hidden">
+              <p className="text-sm sm:text-base font-bold uppercase tracking-[0.3em] text-foreground/60 mb-6">Chargement de l'expérience...</p>
+              <div className="w-48 h-1.5 bg-black/20 rounded-full mx-auto overflow-hidden">
                 <motion.div
                   initial={{ x: "-100%" }}
                   animate={{ x: "0%" }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  transition={{ duration: 1.8, ease: "easeInOut" }}
                   className="w-full h-full bg-foreground rounded-full"
                 />
               </div>
@@ -170,25 +216,23 @@ function Home() {
           </motion.div>
         </section>
 
-        {/* SCROLLING MARQUEE */}
-        <section className="bg-black py-4 sm:py-6 overflow-hidden relative z-30 border-y-4 border-primary shadow-2xl">
-          <div className="flex whitespace-nowrap">
-            <motion.div
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ ease: "linear", duration: 15, repeat: Infinity }}
-              className="flex gap-8 sm:gap-16 items-center"
-            >
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="flex gap-8 sm:gap-16 items-center">
-                  <span className="font-display text-2xl sm:text-4xl font-black text-primary tracking-widest uppercase">Chicha Premium</span>
-                  <span className="text-primary/50 text-xl">✦</span>
-                  <span className="font-display text-2xl sm:text-4xl font-black text-primary tracking-widest uppercase">Cocktails Signature</span>
-                  <span className="text-primary/50 text-xl">✦</span>
-                  <span className="font-display text-2xl sm:text-4xl font-black text-primary tracking-widest uppercase">Ambiance Lounge</span>
-                  <span className="text-primary/50 text-xl">✦</span>
-                </div>
-              ))}
-            </motion.div>
+        {/* ROTATING TEXT BANNER */}
+        <section className="bg-[#F5F0E8] py-6 sm:py-10 overflow-hidden relative z-30 shadow-lg">
+          <div className="max-w-4xl mx-auto text-center px-6">
+            <div className="h-12 sm:h-16 flex items-center justify-center overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={phraseIndex}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="font-display text-3xl sm:text-5xl font-black text-primary uppercase tracking-[0.15em]"
+                >
+                  {ROTATING_PHRASES[phraseIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
           </div>
         </section>
 
