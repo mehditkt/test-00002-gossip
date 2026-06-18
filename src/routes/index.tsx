@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Instagram, Clock, ChevronDown, Star, Leaf, BookOpen, ArrowRight, X, ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
+import logoUrl from "@/assets/logo-gossip.png";
 import heroImg from "@/assets/hero-remastered.png";
 import tableDecor from "@/assets/table-decor.png";
 import menuFood from "@/assets/menu-food.jpg";
@@ -142,15 +143,15 @@ function Home() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="text-center"
+              className="text-center flex flex-col items-center"
             >
-              <h1 className="font-display text-5xl sm:text-8xl font-black text-foreground tracking-[0.2em] mb-4">GOSSIP</h1>
-              <p className="text-sm sm:text-base font-bold uppercase tracking-[0.3em] text-foreground/60 mb-6">Chargement de l'expérience...</p>
+              <img src={logoUrl} alt="Le Gossip" className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mb-6 border-4 border-foreground object-cover" />
+              <h1 className="font-display text-4xl sm:text-7xl font-black text-foreground tracking-[0.2em] mb-8">LE GOSSIP</h1>
               <div className="w-48 h-1.5 bg-black/20 rounded-full mx-auto overflow-hidden">
                 <motion.div
                   initial={{ x: "-100%" }}
                   animate={{ x: "0%" }}
-                  transition={{ duration: 1.8, ease: "easeInOut" }}
+                  transition={{ duration: 2, ease: "easeInOut" }}
                   className="w-full h-full bg-foreground rounded-full"
                 />
               </div>
@@ -180,7 +181,7 @@ function Home() {
             </motion.p>
             <motion.h1 initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 1.8, type: "spring", bounce: 0.4 }}
               className="font-display text-7xl sm:text-9xl md:text-[11rem] font-black leading-none text-white drop-shadow-2xl">
-              GOSSIP
+              LE GOSSIP
             </motion.h1>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.4 }} className="h-1 w-32 bg-primary mt-8 rounded-full shadow-[0_0_15px_rgba(249,196,28,0.8)]" />
             <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.55 }}
@@ -217,9 +218,9 @@ function Home() {
         </section>
 
         {/* ROTATING TEXT BANNER */}
-        <section className="bg-[#F5F0E8] py-6 sm:py-10 overflow-hidden relative z-30 shadow-lg">
-          <div className="max-w-4xl mx-auto text-center px-6">
-            <div className="h-12 sm:h-16 flex items-center justify-center overflow-hidden">
+        <section className="bg-[#F5F0E8] py-4 sm:py-10 overflow-hidden relative z-30 shadow-lg">
+          <div className="max-w-4xl mx-auto text-center px-4">
+            <div className="h-auto min-h-16 flex items-center justify-center overflow-hidden py-2">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={phraseIndex}
@@ -227,7 +228,7 @@ function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="font-display text-3xl sm:text-5xl font-black text-primary uppercase tracking-[0.15em]"
+                  className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-primary uppercase sm:tracking-[0.15em] leading-tight"
                 >
                   {ROTATING_PHRASES[phraseIndex]}
                 </motion.p>
@@ -236,11 +237,44 @@ function Home() {
           </div>
         </section>
 
+        {/* PARALLAX SPACER - Floating Cocktails */}
+        <div className="relative h-[40vh] sm:h-[50vh] bg-background overflow-hidden flex items-center justify-center border-t-2 border-primary/20">
+          <p className="text-primary/10 font-display text-6xl sm:text-9xl font-black uppercase text-center w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none tracking-widest">
+            VIBES
+          </p>
+          {[
+            { emoji: '🍹', x: '10%', size: 'text-5xl sm:text-7xl', delay: 0 },
+            { emoji: '🍸', x: '85%', size: 'text-6xl sm:text-8xl', delay: 0.2 },
+            { emoji: '🧉', x: '30%', size: 'text-4xl sm:text-6xl', delay: 0.4 },
+            { emoji: '🥂', x: '70%', size: 'text-7xl sm:text-9xl', delay: 0.1 },
+            { emoji: '🍋', x: '50%', size: 'text-5xl sm:text-7xl', delay: 0.3 },
+            { emoji: '🌴', x: '20%', size: 'text-6xl sm:text-8xl', delay: 0.5 },
+          ].map((el, i) => (
+            <motion.div
+              key={i}
+              style={{ left: el.x }}
+              className={`absolute bottom-[-100px] ${el.size} drop-shadow-xl z-0`}
+              animate={{ 
+                rotate: [-15, 15, -15], 
+                x: [-20, 20, -20],
+                y: ["0vh", "-70vh"]
+              }}
+              transition={{ 
+                rotate: { duration: 3 + i, repeat: Infinity, ease: "easeInOut" },
+                x: { duration: 4 + i, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 10 + i * 2, repeat: Infinity, ease: "linear" }
+              }}
+            >
+              {el.emoji}
+            </motion.div>
+          ))}
+        </div>
+
         {/* LE LIEU - Slides over the hero */}
-        <section id="franchise" className="relative z-20 bg-background rounded-t-[3rem] -mt-10 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] overflow-hidden">
+        <section id="franchise" className="relative z-20 bg-background overflow-hidden border-t-4 border-primary shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
-          <div className="max-w-6xl mx-auto px-6 py-12 sm:py-32 relative z-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-20">
+          <div className="max-w-6xl mx-auto px-6 py-10 sm:py-24 relative z-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-20">
             <div className="flex-1 space-y-4 sm:space-y-8">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary">Le Lieu</p>
               <h2 className="font-display text-4xl sm:text-7xl font-black leading-tight text-foreground">
@@ -465,10 +499,10 @@ function Home() {
         </section>
 
         {/* FOOTER / CONTACT */}
-        <section id="contact" className="relative py-24 bg-foreground text-background rounded-t-[3rem] mt-10">
+        <section id="contact" className="relative pt-16 pb-8 bg-foreground text-background rounded-t-[3rem]">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="font-display text-5xl sm:text-7xl font-black mb-12">Rejoignez-nous</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
               <a href={`tel:${PHONE_TEL}`} className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group">
                 <Phone className="mx-auto mb-4 text-primary group-hover:text-foreground" size={32} />
                 <p className="text-sm uppercase tracking-widest text-background/60 group-hover:text-foreground/70">Appelez</p>
@@ -484,6 +518,19 @@ function Home() {
                 <p className="text-sm uppercase tracking-widest text-background/60 group-hover:text-foreground/70">Adresse</p>
                 <p className="font-bold mt-2 text-sm sm:text-base group-hover:text-foreground leading-snug">4 Quai Jules Guesde<br/>94400 Vitry-sur-Seine</p>
               </a>
+            </div>
+            
+            {/* PROMO FOOTER */}
+            <div className="border-t border-white/10 pt-8 flex flex-col items-center gap-6">
+              <p className="text-xs sm:text-sm text-white/50 tracking-widest uppercase font-medium">
+                Le Gossip 2026 © <span className="mx-2 text-white">|</span> MHD lab & dev 2026
+              </p>
+              <div className="flex items-center gap-4 bg-white/5 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
+                <img src={logoUrl} alt="Logo" className="w-10 h-10 rounded-full border-2 border-primary object-cover" />
+                <p className="font-display font-black text-base sm:text-lg tracking-widest uppercase text-white">
+                  LE GOSSIP <span className="text-primary">ULTRA STYLER</span>
+                </p>
+              </div>
             </div>
           </div>
         </section>
