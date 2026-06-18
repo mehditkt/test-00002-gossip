@@ -30,40 +30,41 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-gold: var(--gold);
-  --font-display: "Syne", sans-serif;
-  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-body: "Lexend Tera", sans-serif;
 }
 
 :root {
   --radius: 0.75rem;
-  /* Nature lounge — deep ocean blue base, emerald + teal accents, hint of gold */
-  --background: oklch(0.13 0.035 220);
-  --foreground: oklch(0.97 0.02 180);
-  --card: oklch(0.17 0.045 220);
-  --card-foreground: oklch(0.97 0.02 180);
-  --popover: oklch(0.16 0.045 220);
-  --popover-foreground: oklch(0.97 0.02 180);
-  --primary: oklch(0.7 0.16 170);
-  --primary-foreground: oklch(0.11 0.03 220);
-  --secondary: oklch(0.22 0.05 210);
-  --secondary-foreground: oklch(0.97 0.02 180);
-  --muted: oklch(0.2 0.04 215);
-  --muted-foreground: oklch(0.72 0.04 190);
-  --accent: oklch(0.68 0.16 155);
-  --accent-foreground: oklch(0.11 0.03 220);
+  /* Summer Vibes — bright background, sun yellow primary, dark contrast text */
+  --background: oklch(0.98 0.01 90);
+  --foreground: oklch(0.15 0.01 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.01 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.01 260);
+  --primary: oklch(0.85 0.18 90); /* Bright yellow #F9C41C */
+  --primary-foreground: oklch(0.15 0.01 260); /* Black text on primary */
+  --secondary: oklch(0.95 0.01 90);
+  --secondary-foreground: oklch(0.2 0.01 260);
+  --muted: oklch(0.92 0.02 90);
+  --muted-foreground: oklch(0.4 0.02 260);
+  --accent: oklch(0.95 0.02 90);
+  --accent-foreground: oklch(0.15 0.01 260);
   --destructive: oklch(0.6 0.25 25);
   --destructive-foreground: oklch(0.98 0.01 180);
-  --border: oklch(0.32 0.06 180 / 0.45);
-  --input: oklch(0.23 0.05 210);
-  --ring: oklch(0.7 0.16 170);
+  --border: oklch(0.85 0.02 90);
+  --input: oklch(0.92 0.02 90);
+  --ring: oklch(0.85 0.18 90);
   --gold: oklch(0.82 0.13 85);
 
-  --gradient-nature: linear-gradient(135deg, oklch(0.5 0.14 155), oklch(0.55 0.13 180), oklch(0.45 0.12 220));
+  --gradient-nature: linear-gradient(135deg, oklch(0.98 0.05 90), oklch(0.92 0.1 80));
 }
 
 .dark {
-  --background: oklch(0.13 0.035 220);
-  --foreground: oklch(0.97 0.02 180);
+  /* Forced Light Theme for now to keep the summer vibe, or soft dark */
+  --background: oklch(0.98 0.01 90);
+  --foreground: oklch(0.15 0.01 260);
 }
 
 @layer base {
@@ -86,13 +87,13 @@
   img { content-visibility: auto; }
 }
 
-/* Subtle nature-aurora text — softened, no heavy neon halo */
+/* Subtle sun text — softened bright gradient */
 @utility neon-text {
   background: linear-gradient(100deg,
-    oklch(0.82 0.12 155) 0%,
-    oklch(0.86 0.14 175) 35%,
-    oklch(0.78 0.13 200) 65%,
-    oklch(0.82 0.12 155) 100%);
+    oklch(0.75 0.18 70) 0%,
+    oklch(0.85 0.18 90) 35%,
+    oklch(0.70 0.20 50) 65%,
+    oklch(0.75 0.18 70) 100%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -103,60 +104,54 @@
 
 /* Matte refined utilities */
 @utility matte-card {
-  background: linear-gradient(180deg, oklch(0.19 0.04 215 / 0.65), oklch(0.14 0.03 220 / 0.55));
-  border: 1px solid oklch(0.4 0.05 180 / 0.25);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
 }
 @utility matte-chip {
-  background: oklch(0.2 0.04 215 / 0.6);
-  border: 1px solid oklch(0.45 0.04 180 / 0.25);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.05);
 }
 @utility neon-glow-sm {
-  box-shadow: 0 8px 28px -8px oklch(0.7 0.16 170 / 0.55);
+  box-shadow: 0 8px 25px -8px oklch(0.85 0.18 90 / 0.6);
 }
 @utility hairline {
-  background: linear-gradient(90deg, transparent, oklch(0.7 0.14 170 / 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.15), transparent);
 }
 
 @utility snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  height: 100dvh;
-  width: 100%;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
 }
 @utility snap-container {
-  height: 100dvh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
 }
-.snap-container::-webkit-scrollbar { display: none; }
 
-/* Animated nature aurora background */
+/* Animated summer background */
 @utility aurora-bg {
   background:
-    radial-gradient(1200px 800px at 10% 20%, oklch(0.22 0.1 160 / 0.55), transparent 60%),
-    radial-gradient(900px 700px at 90% 80%, oklch(0.2 0.09 220 / 0.55), transparent 60%),
-    linear-gradient(135deg, oklch(0.13 0.04 200), oklch(0.12 0.04 220));
+    radial-gradient(1200px 800px at 10% 20%, oklch(0.95 0.05 90 / 0.6), transparent 60%),
+    radial-gradient(900px 700px at 90% 80%, oklch(0.98 0.08 80 / 0.5), transparent 60%),
+    linear-gradient(135deg, oklch(0.98 0.02 90), oklch(1 0 0));
   background-size: 200% 200%, 200% 200%, 100% 100%;
   animation: aurora-drift 22s ease infinite;
 }
 
-/* Animated subtle grain to kill the AI feel */
+/* Animated subtle grain */
 @utility grain {
   position: relative;
 }
 @utility grain-overlay {
-  position: absolute; inset: 0; pointer-events: none; mix-blend-mode: overlay; opacity: 0.06;
+  position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: 0.03;
   background-image:
-    radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
-    radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px);
+    radial-gradient(rgba(0,0,0,0.6) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.5) 1px, transparent 1px);
   background-size: 3px 3px, 5px 5px;
   background-position: 0 0, 1px 2px;
 }

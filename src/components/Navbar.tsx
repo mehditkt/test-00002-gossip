@@ -36,9 +36,9 @@ export function Navbar() {
             width={40}
             height={40}
             decoding="async"
-            className="h-9 w-9 object-contain invert brightness-[10]"
+            className="h-9 w-9 object-contain"
           />
-          <span className="font-display text-lg sm:text-xl font-bold tracking-[0.18em]">GOSSIP</span>
+          <span className="font-display text-lg sm:text-xl font-bold tracking-[0.18em] text-foreground">GOSSIP</span>
         </Link>
 
         {/* Desktop nav */}
