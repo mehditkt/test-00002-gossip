@@ -145,7 +145,9 @@ function Home() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-center flex flex-col items-center"
             >
-              <img src={logoUrl} alt="Le Gossip" className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mb-6 border-4 border-foreground object-cover" />
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mb-6 border-4 border-foreground overflow-hidden flex items-center justify-center bg-white">
+                <img src={logoUrl} alt="Le Gossip" className="w-full h-full object-cover scale-[1.7]" />
+              </div>
               <h1 className="font-display text-4xl sm:text-7xl font-black text-foreground tracking-[0.2em] mb-8">LE GOSSIP</h1>
               <div className="w-48 h-1.5 bg-black/20 rounded-full mx-auto overflow-hidden">
                 <motion.div
@@ -237,41 +239,11 @@ function Home() {
           </div>
         </section>
 
-        {/* PARALLAX SPACER - Floating Cocktails */}
-        <div className="relative h-[40vh] sm:h-[50vh] bg-background overflow-hidden flex items-center justify-center border-t-2 border-primary/20">
-          <p className="text-primary/10 font-display text-6xl sm:text-9xl font-black uppercase text-center w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none tracking-widest">
-            VIBES
-          </p>
-          {[
-            { emoji: '🍹', x: '10%', size: 'text-5xl sm:text-7xl', delay: 0 },
-            { emoji: '🍸', x: '85%', size: 'text-6xl sm:text-8xl', delay: 0.2 },
-            { emoji: '🧉', x: '30%', size: 'text-4xl sm:text-6xl', delay: 0.4 },
-            { emoji: '🥂', x: '70%', size: 'text-7xl sm:text-9xl', delay: 0.1 },
-            { emoji: '🍋', x: '50%', size: 'text-5xl sm:text-7xl', delay: 0.3 },
-            { emoji: '🌴', x: '20%', size: 'text-6xl sm:text-8xl', delay: 0.5 },
-          ].map((el, i) => (
-            <motion.div
-              key={i}
-              style={{ left: el.x }}
-              className={`absolute bottom-[-100px] ${el.size} drop-shadow-xl z-0`}
-              animate={{ 
-                rotate: [-15, 15, -15], 
-                x: [-20, 20, -20],
-                y: ["0vh", "-70vh"]
-              }}
-              transition={{ 
-                rotate: { duration: 3 + i, repeat: Infinity, ease: "easeInOut" },
-                x: { duration: 4 + i, repeat: Infinity, ease: "easeInOut" },
-                y: { duration: 10 + i * 2, repeat: Infinity, ease: "linear" }
-              }}
-            >
-              {el.emoji}
-            </motion.div>
-          ))}
-        </div>
+        {/* SPACER */}
+        <div className="h-16 sm:h-32 bg-background border-t-2 border-primary/20"></div>
 
         {/* LE LIEU - Slides over the hero */}
-        <section id="franchise" className="relative z-20 bg-background overflow-hidden border-t-4 border-primary shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+        <section id="franchise" className="relative z-20 bg-background overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
           <div className="max-w-6xl mx-auto px-6 py-10 sm:py-24 relative z-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-20">
@@ -499,39 +471,43 @@ function Home() {
         </section>
 
         {/* FOOTER / CONTACT */}
-        <section id="contact" className="relative pt-16 pb-8 bg-foreground text-background rounded-t-[3rem]">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="font-display text-5xl sm:text-7xl font-black mb-12">Rejoignez-nous</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
-              <a href={`tel:${PHONE_TEL}`} className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group">
+        <section id="contact" className="relative pt-16 pb-24 bg-foreground text-background rounded-t-[3rem]">
+          <div className="max-w-4xl mx-auto px-6">
+            
+            <div className="flex items-center justify-start gap-4 sm:gap-6 mb-12">
+              <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full border-2 border-primary overflow-hidden flex-shrink-0 bg-white">
+                <img src={logoUrl} alt="Logo" className="w-full h-full object-cover scale-[1.7]" />
+              </div>
+              <h2 className="text-5xl sm:text-7xl text-primary" style={{ fontFamily: "'Brush Script MT', 'Caveat', 'Dancing Script', cursive" }}>
+                Le Gossip
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+              <a href={`tel:${PHONE_TEL}`} className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group text-center">
                 <Phone className="mx-auto mb-4 text-primary group-hover:text-foreground" size={32} />
                 <p className="text-sm uppercase tracking-widest text-background/60 group-hover:text-foreground/70">Appelez</p>
                 <p className="font-bold mt-2 text-lg group-hover:text-foreground">{PHONE}</p>
               </a>
-              <a href="https://instagram.com/legossip" target="_blank" rel="noreferrer" className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group">
+              <a href="https://instagram.com/legossip" target="_blank" rel="noreferrer" className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group text-center">
                 <Instagram className="mx-auto mb-4 text-primary group-hover:text-foreground" size={32} />
                 <p className="text-sm uppercase tracking-widest text-background/60 group-hover:text-foreground/70">Suivez</p>
                 <p className="font-bold mt-2 text-lg group-hover:text-foreground">@legossip</p>
               </a>
-              <a href={MAP_EMBED} target="_blank" rel="noreferrer" className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group">
+              <a href={MAP_EMBED} target="_blank" rel="noreferrer" className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group text-center">
                 <MapPin className="mx-auto mb-4 text-primary group-hover:text-foreground" size={32} />
                 <p className="text-sm uppercase tracking-widest text-background/60 group-hover:text-foreground/70">Adresse</p>
                 <p className="font-bold mt-2 text-sm sm:text-base group-hover:text-foreground leading-snug">4 Quai Jules Guesde<br/>94400 Vitry-sur-Seine</p>
               </a>
             </div>
             
-            {/* PROMO FOOTER */}
-            <div className="border-t border-white/10 pt-8 flex flex-col items-center gap-6">
-              <p className="text-xs sm:text-sm text-white/50 tracking-widest uppercase font-medium">
-                Le Gossip 2026 © <span className="mx-2 text-white">|</span> MHD lab & dev 2026
-              </p>
-              <div className="flex items-center gap-4 bg-white/5 px-6 py-3 rounded-full hover:bg-white/10 transition-colors">
-                <img src={logoUrl} alt="Logo" className="w-10 h-10 rounded-full border-2 border-primary object-cover" />
-                <p className="font-display font-black text-base sm:text-lg tracking-widest uppercase text-white">
-                  LE GOSSIP <span className="text-primary">ULTRA STYLER</span>
-                </p>
-              </div>
-            </div>
+          </div>
+          
+          {/* PROMO FOOTER */}
+          <div className="absolute bottom-4 left-0 w-full text-center">
+            <p className="text-[10px] sm:text-xs text-white/30 tracking-widest uppercase font-medium">
+              Le Gossip 2026 © <span className="mx-2">|</span> MHD lab & dev
+            </p>
           </div>
         </section>
       </main>
