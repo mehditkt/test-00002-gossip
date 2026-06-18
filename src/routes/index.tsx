@@ -359,7 +359,7 @@ function Home() {
               <a href={MAP_EMBED} target="_blank" rel="noreferrer" className="bg-white/10 hover:bg-primary/90 p-8 rounded-3xl transition-colors group">
                 <MapPin className="mx-auto mb-4 text-primary group-hover:text-foreground" size={32} />
                 <p className="text-sm uppercase tracking-widest text-background/60 group-hover:text-foreground/70">Adresse</p>
-                <p className="font-bold mt-2 text-lg group-hover:text-foreground">Vitry-sur-Seine</p>
+                <p className="font-bold mt-2 text-sm sm:text-base group-hover:text-foreground leading-snug">4 Quai Jules Guesde<br/>94400 Vitry-sur-Seine</p>
               </a>
             </div>
           </div>
