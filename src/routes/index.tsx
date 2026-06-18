@@ -154,25 +154,6 @@ function Home() {
           </div>
         </section>
 
-        {/* CARTE */}
-        <ParallaxSection id="carte" index={2} bg={carteBook} alt="Carte du Gossip Lounge posée sur table">
-          <div className="max-w-4xl mx-auto text-center px-6 py-32 mt-40">
-            <div className="matte-card p-10 sm:p-16 rounded-[3rem] inline-block shadow-2xl">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-4">La Carte</p>
-              <h2 className="font-display text-4xl sm:text-6xl font-black leading-tight text-foreground mb-8">
-                Des saveurs <span className="neon-text">vibrantes</span>.
-              </h2>
-              <button
-                onClick={() => setCarteOpen(true)}
-                className="group inline-flex items-center gap-3 rounded-full bg-primary px-10 py-5 text-lg font-bold text-primary-foreground shadow-[0_10px_30px_-10px_rgba(249,196,28,0.6)] transition-transform hover:scale-[1.05]"
-              >
-                <BookOpen size={20} />
-                Explorer la carte
-                <ArrowRight size={20} className="transition-transform group-hover:translate-x-2" />
-              </button>
-            </div>
-          </div>
-        </ParallaxSection>
 
         {/* MENU PREVIEW */}
         <section id="menu" className="relative py-24 sm:py-32 bg-white">
