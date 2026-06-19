@@ -170,6 +170,26 @@
 }
 @utility animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
 
+/* Beige linen fabric texture */
+@utility linen-beige {
+  background-color: #F4F1EA;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 195, 170, 0.15) 2px,
+      rgba(210, 195, 170, 0.15) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(210, 195, 170, 0.12) 2px,
+      rgba(210, 195, 170, 0.12) 4px
+    );
+}
+
 /* Hide Lovable badge */
 #lovable-badge,
 .lovable-badge {

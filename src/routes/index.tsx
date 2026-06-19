@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { MapPin, Phone, Instagram, Clock, ChevronDown, Star, Leaf, BookOpen, ArrowRight, X, ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import logoUrl from "@/assets/logo-gossip.png";
+import logoRound from "@/assets/logo-sans-ecriture.png";
 import heroImg from "@/assets/hero-remastered.png";
 import tableDecor from "@/assets/table-decor.png";
 import menuFood from "@/assets/menu-food.jpg";
@@ -145,8 +146,8 @@ function Home() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-center flex flex-col items-center"
             >
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mb-6 border-4 border-foreground overflow-hidden flex items-center justify-center bg-white">
-                <img src={logoUrl} alt="Le Gossip" className="w-full h-full object-cover scale-[1.7]" />
+              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mb-6 border-4 border-foreground overflow-hidden flex items-center justify-center bg-white p-3">
+                <img src={logoRound} alt="Le Gossip" className="w-full h-full object-contain" />
               </div>
               <h1 className="font-display text-4xl sm:text-7xl font-black text-foreground tracking-[0.2em] mb-8">LE GOSSIP</h1>
               <div className="w-48 h-1.5 bg-black/20 rounded-full mx-auto overflow-hidden">
@@ -220,7 +221,7 @@ function Home() {
         </section>
 
         {/* ROTATING TEXT BANNER */}
-        <section className="bg-[#F5F0E8] py-4 sm:py-10 overflow-hidden relative z-30 shadow-lg">
+        <section className="linen-beige py-4 sm:py-10 overflow-hidden relative z-30 shadow-lg">
           <div className="max-w-4xl mx-auto text-center px-4">
             <div className="h-auto min-h-16 flex items-center justify-center overflow-hidden py-2">
               <AnimatePresence mode="wait">
@@ -239,11 +240,8 @@ function Home() {
           </div>
         </section>
 
-        {/* SPACER */}
-        <div className="h-16 sm:h-32 bg-background border-t-2 border-primary/20"></div>
-
         {/* LE LIEU - Slides over the hero */}
-        <section id="franchise" className="relative z-20 bg-[#F4F1EA] overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+        <section id="franchise" className="relative z-20 linen-beige overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
           <div className="max-w-6xl mx-auto px-6 py-10 sm:py-24 relative z-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-20">
@@ -317,7 +315,12 @@ function Home() {
         </section>
 
         {/* LA CARTE */}
-        <section id="carte" className="relative py-16 sm:py-32 bg-zinc-900 overflow-hidden z-20 [perspective:1000px]">
+        <section id="carte" className="relative py-16 sm:py-32 bg-gradient-to-br from-[#1a0f00] via-[#2d1800] to-[#1a0f00] overflow-hidden z-20 [perspective:1000px]">
+          {/* Warm orange ambient glow */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/15 rounded-full blur-[120px]" />
+            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-amber-500/10 rounded-full blur-[100px]" />
+          </div>
           <div className="max-w-6xl mx-auto px-6 lg:px-12 text-center">
             <h2 className="font-display text-4xl sm:text-7xl font-black mb-8 sm:mb-16 text-white">
               Notre <span className="neon-text">Carte</span>
@@ -375,7 +378,7 @@ function Home() {
               viewport={{ once: true }}
               className="flex-1 w-full relative"
             >
-              <div className="absolute -inset-4 bg-primary/20 rounded-[3rem] rotate-3 blur-sm" />
+              <div className="absolute -inset-4 bg-yellow-400/30 rounded-[3rem] rotate-3 blur-sm shadow-[0_0_40px_rgba(250,204,21,0.3)]" />
               <div className="relative rounded-[2rem] shadow-2xl w-full aspect-square sm:aspect-video lg:aspect-square overflow-hidden border-8 border-white bg-black">
                 <AnimatePresence mode="wait">
                   <motion.img 
@@ -396,7 +399,7 @@ function Home() {
                   onClick={() => setNuit(!nuit)}
                   className="w-full sm:w-auto bg-foreground text-background font-bold text-sm sm:text-base px-6 py-3 sm:py-4 rounded-full shadow-2xl hover:scale-105 transition-transform whitespace-nowrap border border-white/20"
                 >
-                  {nuit ? "Voir la terrasse de jour ☀️" : "Afficher la terrasse de nuit 🌙"}
+                  {nuit ? "Voir la terrasse de jour ☀️" : "Voir la terrasse de nuit 🌙"}
                 </button>
               </div>
             </motion.div>
@@ -412,7 +415,7 @@ function Home() {
         </section>
 
         {/* POSITION */}
-        <section id="position" className="relative py-16 sm:py-32 bg-gradient-to-b from-[#e8f5e9] via-[#e8f5e9] via-75% to-[#F4F1EA] overflow-hidden">
+        <section id="position" className="relative py-16 sm:py-32 bg-gradient-to-b from-[#c8e6c9] via-[#c8e6c9] via-75% to-[#e8dfd0] overflow-hidden">
           <div className="absolute inset-0 aurora-bg opacity-40 pointer-events-none" />
           <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
@@ -475,8 +478,8 @@ function Home() {
           <div className="max-w-4xl mx-auto px-6">
             
             <div className="flex items-center justify-start gap-4 sm:gap-6 mb-12">
-              <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full border-2 border-primary overflow-hidden flex-shrink-0 bg-white">
-                <img src={logoUrl} alt="Logo" className="w-full h-full object-cover scale-[1.7]" />
+              <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full border-2 border-primary overflow-hidden flex-shrink-0 bg-white p-2">
+                <img src={logoRound} alt="Logo" className="w-full h-full object-contain" />
               </div>
               <h2 className="text-5xl sm:text-7xl text-primary" style={{ fontFamily: "'Brush Script MT', 'Caveat', 'Dancing Script', cursive" }}>
                 Le Gossip
