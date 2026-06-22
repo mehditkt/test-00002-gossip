@@ -147,7 +147,7 @@ function Home() {
               className="text-center flex flex-col items-center"
             >
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mb-6 border-4 border-foreground overflow-hidden flex items-center justify-center bg-white p-3">
-                <img src={logoRound} alt="Le Gossip" className="w-full h-full object-contain" />
+                <img src={logoRound} alt="Logo Le Gossip Lounge - Chicha et Salon de thé Paris 94" className="w-full h-full object-contain" />
               </div>
               <h1 className="font-display text-4xl sm:text-7xl font-black text-foreground tracking-[0.2em] mb-8">LE GOSSIP</h1>
               <div className="w-48 h-1.5 bg-black/20 rounded-full mx-auto overflow-hidden">
@@ -173,7 +173,7 @@ function Home() {
               initial={{ scale: 1.2 }}
               animate={{ scale: 1 }}
               transition={{ duration: 3, ease: "easeOut", delay: 1.5 }}
-              src={heroImg} alt="Terrasse Le Gossip Lounge" className="h-full w-full object-cover opacity-90" 
+              src={heroImg} alt="Terrasse Le Gossip Lounge - Meilleur bar à chicha de Vitry-sur-Seine (94)" className="h-full w-full object-cover opacity-90" 
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30" />
           </motion.div>
@@ -275,7 +275,7 @@ function Home() {
               className="flex-1 w-full"
             >
               <div className="relative aspect-square sm:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 border-8 border-white">
-                <img src={photo2} alt="Ambiance lounge" className="w-full h-full object-cover filter contrast-110 saturate-110" style={{ imageRendering: 'high-quality' }} />
+                <img src={photo2} alt="Ambiance cosy et lounge au Gossip - Chicha premium en Île-de-France" className="w-full h-full object-cover filter contrast-110 saturate-110" style={{ imageRendering: 'high-quality' }} />
               </div>
             </motion.div>
           </div>
@@ -327,7 +327,7 @@ function Home() {
             </h2>
             <div className="relative aspect-[4/3] sm:aspect-[21/9] max-w-5xl mx-auto rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-2xl border-4 sm:border-8 border-white group flex items-center justify-center [perspective:1000px] bg-black">
               {/* Background Decor */}
-              <img src={tableDecor} alt="Table Decor" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90" />
+              <img src={tableDecor} alt="Décoration élégante et narguilé premium au Gossip Lounge" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90" />
               
               {/* 3D Book */}
               <div className="relative z-10 flex w-[90%] sm:w-[60%] max-w-2xl aspect-[1.414/1] shadow-[0_30px_60px_rgba(0,0,0,0.5)] rounded-sm overflow-hidden transition-transform duration-700 group-hover:scale-[1.03] group-hover:[transform:rotateX(0deg)] [transform:rotateX(10deg)] origin-bottom bg-white ring-1 ring-black/10">
@@ -388,7 +388,7 @@ function Home() {
                     exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     src={nuit ? photo3 : photo1} 
-                    alt="Terrasse Gossip" 
+                    alt="Terrasse chill du Gossip Lounge - Narguilé et Cocktails au bord de l'eau" 
                     className="absolute inset-0 w-full h-full object-cover filter contrast-110 saturate-110" 
                     style={{ imageRendering: 'high-quality' }}
                   />
@@ -502,6 +502,13 @@ function Home() {
                 <p className="text-sm uppercase tracking-widest text-background/60 group-hover:text-foreground/70">Adresse</p>
                 <p className="font-bold mt-2 text-sm sm:text-base group-hover:text-foreground leading-snug">4 Quai Jules Guesde<br/>94400 Vitry-sur-Seine</p>
               </a>
+            </div>
+            
+            {/* SEO Text Block */}
+            <div className="mt-12 text-center text-xs sm:text-sm text-background/40 leading-relaxed font-body tracking-wider">
+              <p>
+                <strong>Le Gossip Lounge</strong> est la référence des salons de thé et bars à chicha en Île-de-France. Situé au cœur du <strong>94 (Val-de-Marne) à Vitry-sur-Seine</strong>, aux portes de <strong>Paris</strong>, notre établissement offre une expérience lounge inégalée. Profitez de notre terrasse estivale avec vue sur la Seine, savourez des <strong>cocktails signature</strong>, découvrez nos <strong>burgers gourmets</strong>, et détendez-vous avec nos <strong>chichas et narguilés premium</strong>. Que vous cherchiez la meilleure chicha de Paris ou un bar lounge cosy, Le Gossip est votre destination idéale pour chiller.
+              </p>
             </div>
             
           </div>
